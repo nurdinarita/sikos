@@ -37,7 +37,7 @@
 
 
     <div class="container-fluid pt-4 px-4">
-        <h2>Tambah Data Penghuni "{{ $kos->namakos }}"</h2>
+        <h2>Tambah Data Penghuni "{{ !isset($penghuni_kos) ? $kos->namakos : $penghuni_kos->kos->namakos }}"</h2>
         <div class="row my-3">
             <div class="col-xl-6">
                 <form action="{{ !isset($penghuni_kos) ? url('penghuni-kos/'.$kos->id.'/create') : url('penghuni-kos/'.$penghuni_kos->id.'/update') }}" method="post">

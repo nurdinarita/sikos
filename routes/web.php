@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManagementKosController;
 use App\Http\Controllers\Admin\PenghuniKosController;
+use App\Http\Controllers\Admin\RiwayatPembayaranController;
 use App\Http\Controllers\Admin\ProfilController;
 
 /*
@@ -41,4 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/penghuni-kos/{id}/create', [PenghuniKosController::class, 'store']);
     Route::get('/penghuni-kos/{id}/edit', [PenghuniKosController::class, 'edit']);
     Route::post('/penghuni-kos/{id}/update', [PenghuniKosController::class, 'update']);
+    Route::delete('/penghuni-kos/{id}/delete', [PenghuniKosController::class, 'destroy']);
+    
+    Route::get('/riwayat-pembayaran', [RiwayatPembayaranController::class, 'index']);
 });

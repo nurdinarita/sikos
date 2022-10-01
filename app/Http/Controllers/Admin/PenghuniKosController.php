@@ -24,6 +24,7 @@ class PenghuniKosController extends Controller
             'active' => 'Penghuni Kos',
             'kos_id' => $id,
             'penghuni_kos' => PenghuniKos::where('kos_id', $id)->latest()->get(),
+            'kos' => Kos::find($id),
         ]);
     }
 
@@ -58,8 +59,8 @@ class PenghuniKosController extends Controller
     {
         return view('admin.penghunikos.form')->with([
             'active' => 'Penghuni Kos',
-            'kos_id' => $id,
-            'kos' => Kos::where('id', $id)->first(),
+            // 'kos_id' => $id,
+            // 'kos' => Kos::where('id', $id)->first(),
             'penghuni_kos' => PenghuniKos::where('id', $id)->first(),
         ]);
     }
@@ -82,5 +83,11 @@ class PenghuniKosController extends Controller
         $penghuni->update($validatedData);
 
         return redirect('penghuni-kos/'.$penghuni->kos_id)->with('success', 'Data Berhasil Diupdate');
+    }
+
+    public function destroy($id)
+    {
+        PenghuniKos::destroy($id);
+        return back()->with('success', 'Data Berhasil Dihapus');
     }
 }

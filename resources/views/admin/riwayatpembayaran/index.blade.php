@@ -37,7 +37,7 @@
 
 
     <div class="container-fluid pt-4 px-4">
-        <h2>Penghuni Kos</h2>
+        <h2>Riwayat Pembayaran</h2>
         @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -45,22 +45,28 @@
         </div>
         @endif
         <div class="row my-5">
-            @foreach ($kos as $item)
-            <div class="col-xl-4 mb-3">
+            <div class="col-xl-12 mb-3">
                 <div class="card">
-                    <img src="{{ asset('storage/gambar-kos/'.$item->gambarkos) }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ $item->namakos }}</h5>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Perbulan Rp. {{ number_format($item->hargaperbulan,2,',','.') }}</li>
-                        <li class="list-group-item">Pertahun Rp. {{ number_format($item->hargapertahun,2,',','.') }}</li>
-                      </ul>
-                      <a href="{{ url('penghuni-kos/'. $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-users me-2"></i>Penghuni Kos</a>
-                      <a href="#!" class="btn btn-success btn-sm"><i class="fas fa-bed"></i> Tersedia {{ $item->jumlahkamar - $item->penghuni->count() }} Kamar</a>
-                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama Penghuni</th>
+                            <th scope="col">No HP</th>
+                            <th scope="col">Nama Kamar</th>
+                            <th scope="col">Tanggal Mulai Sewa</th>
+                            <th scope="col">Tanggal Akhir Sewa</th>
+                            <th scope="col">Tanggal Pembayaran</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                            </tr>
+                        </tbody>
+                      </table>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
     {{-- <!-- Footer Start -->
@@ -85,18 +91,4 @@
 
 
 
-
-<script>
-    var deleteModal = document.getElementById('deleteModal')
-    deleteModal.addEventListener('show.bs.modal', function (event) {
-    var button = event.relatedTarget
-
-    var url = button.getAttribute('data-url')
-    var urlInput = deleteModal.querySelector('form')
-    urlInput.setAttribute("action", url)
-  })
-</script>
-@endsection
-
-@section('script')
 @endsection

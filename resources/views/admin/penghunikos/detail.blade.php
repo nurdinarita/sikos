@@ -51,7 +51,9 @@
         </div>
         <div class="row">
             <div class="col-xl-12">
+                @if($kos->jumlahkamar - $penghuni_kos->count() != 0)
                 <a href="{{ url('penghuni-kos/'.$kos_id.'/create') }}" class="btn btn-primary btn-sm mb-2">Tambah Data</a>
+                @endif
                 <div class="card">
                     <table class="table table-bordered">
                         <thead>
@@ -69,7 +71,7 @@
                         <tbody>
                         @foreach($penghuni_kos as $penghuni)
                           <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $penghuni->nama }}</td>
                             <td>{{ $penghuni->no_hp }}</td>
                             <td>{{ $penghuni->nama_kamar }}</td>
@@ -78,7 +80,7 @@
                             <td><a href="#!" class="btn btn-{{ $penghuni->status == 0 ? 'danger' : 'success' }} btn-sm">{{ $penghuni->status == 0 ? 'Belum Dibayar' : 'Lunas' }}</a></td>
                             <td>
                                 <a href="{{ url('penghuni-kos/'.$penghuni->id.'/edit') }}" class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-url="{{ url('penghuni-kos/'.$kos_id.'/delete') }}"><i class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-url="{{ url('penghuni-kos/'.$penghuni->id.'/delete') }}"><i class="fas fa-trash"></i></button>
                             </td>
                           </tr>
                         @endforeach
@@ -107,4 +109,37 @@
     <!-- Footer End -->
 </div>
 <!-- Content End -->   
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>Yakin ingin menghapus data?</p>
+        </div>
+        <div class="modal-footer">
+            <form action="" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger btn-sm">Ya, Hapus</button>
+            </form>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    var deleteModal = document.getElementById('deleteModal')
+    deleteModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+
+    var url = button.getAttribute('data-url')
+    var urlInput = deleteModal.querySelector('form')
+    urlInput.setAttribute("action", url)
+  })
+</script>
 @endsection
