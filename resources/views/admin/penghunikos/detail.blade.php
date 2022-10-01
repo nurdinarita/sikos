@@ -77,7 +77,10 @@
                             <td>{{ $penghuni->nama_kamar }}</td>
                             <td>{{ $penghuni->tanggal_mulai_sewa }}</td>
                             <td>{{ $penghuni->tanggal_akhir_sewa }}</td>
-                            <td><a href="#!" class="btn btn-{{ $penghuni->status == 0 ? 'danger' : 'success' }} btn-sm">{{ $penghuni->status == 0 ? 'Belum Dibayar' : 'Lunas' }}</a></td>
+                            <td>
+                                {{-- <a href="{{ url('penghuni-kos/'.$penghuni->id.'/update-pembayaran') }}" class="btn btn-{{ $penghuni->status == 0 ? 'danger' : 'success' }} btn-sm">{{ $penghuni->status == 0 ? 'Belum Dibayar' : 'Lunas' }}</a> --}}
+                                <button type="button" class="btn btn-{{ $penghuni->status == 0 ? 'danger' : 'success' }} btn-sm" data-bs-toggle="{{ $penghuni->status == 0 ? 'modal' : '' }}" data-bs-target="#updatePembayaran" data-url="{{ url('penghuni-kos/'.$penghuni->id.'/update-pembayaran') }}">{{ $penghuni->status == 0 ? 'Belum Dibayar' : 'Lunas' }}</button>
+                            </td>
                             <td>
                                 <a href="{{ url('penghuni-kos/'.$penghuni->id.'/edit') }}" class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-url="{{ url('penghuni-kos/'.$penghuni->id.'/delete') }}"><i class="fas fa-trash"></i></button>
@@ -132,6 +135,30 @@
     </div>
 </div>
 
+<!-- Delete Modal -->
+<div class="modal fade" id="updatePembayaran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="" method="post" id="formtanggalbayar">
+                @csrf
+                <div class="my-2">
+                    <label for="tanggalbayar">Pilih Tanggal Bayar</label>
+                    <input type="date" name="tanggalbayar" id="tanggalbayar" class="form-control" placeholder="Tanggal Pembayaran" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Ya, Sudah Dibayar</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+</div>
+
 <script>
     var deleteModal = document.getElementById('deleteModal')
     deleteModal.addEventListener('show.bs.modal', function (event) {
@@ -139,6 +166,15 @@
 
     var url = button.getAttribute('data-url')
     var urlInput = deleteModal.querySelector('form')
+    urlInput.setAttribute("action", url)
+  })
+
+    var updatePembayaran = document.getElementById('updatePembayaran')
+    updatePembayaran.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+
+    var url = button.getAttribute('data-url')
+    var urlInput = updatePembayaran.querySelector('form#formtanggalbayar')
     urlInput.setAttribute("action", url)
   })
 </script>

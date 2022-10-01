@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PenghuniKos;
+use App\Models\Pembayaran;
 
 class RiwayatPembayaranController extends Controller
 {
@@ -15,26 +17,25 @@ class RiwayatPembayaranController extends Controller
     public function index()
     {
         return view('admin.riwayatpembayaran.index')->with([
-            'active' => 'Riwayat Pembayaran'
+            'active' => 'Riwayat Pembayaran',
+            'pembayaran' => Pembayaran::latest()->get()
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function updatePembayaran($id)
     {
-        //
+        $penghuni = PenghuniKos::find($id);
+
+        $penghuni->update(['status' => 1]);
+        Pembayaran::create([
+            'penghuni_id' => $penghuni->id,
+            'tanggalbayar' => request()->tanggalbayar,
+        ]);
+        return back()->with('success','Pembayaran Berhasil Diupdate');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //

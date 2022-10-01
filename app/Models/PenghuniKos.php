@@ -15,4 +15,9 @@ class PenghuniKos extends Model
     {
         return $this->belongsTo(Kos::class);
     }
+    
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class);
+    }
 }

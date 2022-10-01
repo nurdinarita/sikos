@@ -56,13 +56,23 @@
                             <th scope="col">Nama Kamar</th>
                             <th scope="col">Tanggal Mulai Sewa</th>
                             <th scope="col">Tanggal Akhir Sewa</th>
-                            <th scope="col">Tanggal Pembayaran</th>
+                            <th scope="col">Tanggal Pem bayaran</th>
+                            <th scope="col">Status</th>
                           </tr>
                         </thead>
                         <tbody>
+                            @foreach($pembayaran as $riwayat)
                             <tr>
-
+                                <th>{{ $loop->iteration }}</th>
+                                <td>{{ $riwayat->penghuni->nama }}</td>
+                                <td>{{ $riwayat->penghuni->no_hp }}</td>
+                                <td>{{ $riwayat->penghuni->nama_kamar }}</td>
+                                <td>{{ $riwayat->penghuni->tanggal_mulai_sewa }}</td>
+                                <td>{{ $riwayat->penghuni->tanggal_akhir_sewa }}</td>
+                                <td>{{ $riwayat->tanggalbayar }}</td>
+                                <td><span class="btn btn-{{ $riwayat->penghuni->status == 0 ? 'danger' : 'success' }} btn-sm" >{{ $riwayat->penghuni->status == 0 ? 'Belum Dibayar' : 'Lunas' }}</span></td>
                             </tr>
+                            @endforeach
                         </tbody>
                       </table>
                 </div>
