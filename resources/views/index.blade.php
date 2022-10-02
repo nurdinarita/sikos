@@ -41,35 +41,37 @@
     <div class="searchbar">
       <div class="row">
         <div class="col-lg-6 col-sm-6">
-          <input type="text" class="form-control" placeholder="Search of Properties">
-          <div class="row">
-            {{-- <div class="col-lg-3 col-sm-3 ">
-              <select class="form-control">
-                <option>Buy</option>
-                <option>Rent</option>
-                <option>Sale</option>
-              </select>
-            </div> --}}
-            <div class="col-lg-3 col-md-3 col-sm-4">
-              <select class="form-control">
-                <option>Harga</option>
-                <option>150.000 - 200.000</option>
-                <option>200.000 - 250.000</option>
-                <option>250.000 - 300.000</option>
-                <option>300.000 - ...</option>
-              </select>
+          <form action="{{ url('all') }}" method="get">
+            <input type="text" class="form-control" name="search" placeholder="Cari Kos">
+            <div class="row">
+              {{-- <div class="col-lg-3 col-sm-3 ">
+                <select class="form-control">
+                  <option>Buy</option>
+                  <option>Rent</option>
+                  <option>Sale</option>
+                </select>
+              </div> --}}
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                <select class="form-control" name="harga">
+                  <option value="">Harga</option>
+                  <option value="1">150.000 - 200.000</option>
+                  <option value="2">200.000 - 250.000</option>
+                  <option value="3">250.000 - 300.000</option>
+                  <option value="4">300.000 - ...</option>
+                </select>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4">
+              <select class="form-control" name="kategori">
+                  {{-- <option value="">Kategori Kos</option> --}}
+                  <option value="1">Kos Cowok</option>
+                  <option value="2">Kos Cewek</option>
+                </select>
+                </div>
+                <div class="col-lg-3 col-sm-4">
+                <button class="btn btn-success">Cari Kos</button>
+                </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-            <select class="form-control">
-                <option>Kategori Kos</option>
-                <option>Kos Cowok</option>
-                <option>Kos Cewek</option>
-              </select>
-              </div>
-              <div class="col-lg-3 col-sm-4">
-              <button class="btn btn-success">Cari Kos</button>
-              </div>
-          </div>
+          </form>
           
           
         </div>

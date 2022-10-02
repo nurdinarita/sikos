@@ -14,40 +14,40 @@
 
 <div class="row">
 <div class="col-lg-3 col-sm-4 ">
-
+  <form action="{{ url('all') }}" method="get">
   <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Cari Kos</h4>
-    <input type="text" class="form-control" placeholder="Search of Properties">
+    <input type="text" class="form-control" name="search" placeholder="Cari Kos">
     <div class="row">
             <div class="col-lg-5">
-              <select class="form-control">
-                <option>Buy</option>
-                <option>Rent</option>
-                <option>Sale</option>
+              <select class="form-control" name="kategori">
+                {{-- <option value="">Kategori Kos</option> --}}
+                <option value="1">Cowok</option>
+                <option value="2">Cewek</option>
               </select>
             </div>
             <div class="col-lg-7">
-              <select class="form-control">
-                <option>Price</option>
-                <option>$150,000 - $200,000</option>
-                <option>$200,000 - $250,000</option>
-                <option>$250,000 - $300,000</option>
-                <option>$300,000 - above</option>
+              <select class="form-control" name="harga">
+                <option value="">Harga</option>
+                <option value="1">150.000 - 200.000</option>
+                <option value="2">200.000 - 250.000</option>
+                <option value="3">250.000 - 300.000</option>
+                <option value="4">300.000 - ...</option>
               </select>
             </div>
           </div>
 
           <div class="row">
           <div class="col-lg-12">
-              <select class="form-control">
+              {{-- <select class="form-control">
                 <option>Property Type</option>
                 <option>Apartment</option>
                 <option>Building</option>
                 <option>Office Space</option>
-              </select>
+              </select> --}}
               </div>
           </div>
-          <button class="btn btn-primary">Find Now</button>
-
+          <button class="btn btn-primary">Cari</button>
+        </form>
   </div>
 
 
@@ -73,13 +73,13 @@
 <div class="sortby clearfix">
 <div class="pull-left result">Showing: 12 of 100 </div>
 <div class="pull-right">
-    <form action="sort-by" method="get">
+    {{-- <form action="sort-by" method="get">
     <select class="form-control">
     <option>Urut Berdasarkan</option>
     <option>Harga: Rendah ke Tinggi</option>
     <option>Harga: Tinggi ke Rendah</option>
 </select>
-</form>
+</form> --}}
 </div>
 
 </div>
@@ -105,7 +105,7 @@
       <!-- properties -->
 
       <div class="center">
-<ul class="pagination">
+{{-- <ul class="pagination">
           <li><a href="#">«</a></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -113,7 +113,7 @@
           <li><a href="#">4</a></li>
           <li><a href="#">5</a></li>
           <li><a href="#">»</a></li>
-        </ul>
+        </ul> --}}
 </div>
 
 </div>
