@@ -37,7 +37,7 @@
 
 
     <div class="container-fluid pt-4 px-4">
-        <h2>Tambah Data Kos</h2>
+        <h2>{{ !isset($kos) ? 'Tambah Data Kos' : 'Edit Data Kos'}}</h2>
         <div class="row my-3">
             <div class="col-xl-6">
                 <form action="{{ !isset($kos) ? url('management-kos') : url('management-kos/'.$kos->id) }}" method="post" enctype="multipart/form-data">

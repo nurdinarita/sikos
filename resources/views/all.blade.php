@@ -71,7 +71,7 @@
 
 <div class="col-lg-9 col-sm-8">
 <div class="sortby clearfix">
-<div class="pull-left result">Showing: 12 of 100 </div>
+<div class="pull-left result">Menampilkan: {{ $kos->count() }} dari {{ $kos->total() }} </div>
 <div class="pull-right">
     {{-- <form action="sort-by" method="get">
     <select class="form-control">
@@ -89,7 +89,7 @@
      <!-- properties -->
       <div class="col-lg-4 col-sm-6">
       <div class="properties">
-        <div class="image-holder"><img src="{{ asset('storage/gambar-kos/'. $item->gambarkos) }}" class="img-responsive" alt="properties">
+        <div class="image-holder"><img src="{{ asset('storage/gambar-kos/'. $item->gambarkos) }}" class="img-responsive" alt="properties" style="width:300px;height:150px;">
           <div class="status {{ $item->status == 1 ? 'sold' : 'new' }}">{{ $item->status == 1 ? 'Tersedia' : 'Tidak Tersedia' }}</div>
         </div>
         <h4><a href="{{ url($item->id.'/detail') }}">{{ $item->namakos }}</a></h4>
@@ -105,15 +105,16 @@
       <!-- properties -->
 
       <div class="center">
-{{-- <ul class="pagination">
-          <li><a href="#">«</a></li>
+        <ul class="pagination">
+          {{ $kos->links() }}
+          {{-- <li><a href="#">«</a></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
           <li><a href="#">3</a></li>
           <li><a href="#">4</a></li>
           <li><a href="#">5</a></li>
-          <li><a href="#">»</a></li>
-        </ul> --}}
+          <li><a href="#">»</a></li> --}}
+        </ul>
 </div>
 
 </div>

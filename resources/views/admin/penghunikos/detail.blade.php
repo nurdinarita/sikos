@@ -37,7 +37,7 @@
 
 
     <div class="container-fluid pt-4 px-4">
-        <h2>Detail Kos</h2>
+        <h2>Penghuni Kos</h2>
         @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
