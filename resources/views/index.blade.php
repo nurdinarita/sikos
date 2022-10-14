@@ -119,7 +119,7 @@
         <p>Aplikasi ini dibuat menggunakan framework bootstrap sebagai front end nya, dan menggunakan framwork laravel sebagai back end nya. Aplikasi ini dibuat agar dapat memudahkan masyarakat untuk mencari info kos-kosan khususnya di area Banda Aceh Dan Aceh Besar</p>
       
       </div>
-      <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
+      {{-- <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
         <h3>Terbaru</h3>
         <div id="myCarousel" class="carousel slide">
           <ol class="carousel-indicators">
@@ -168,7 +168,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 </div>

@@ -2,7 +2,8 @@
 <!-- banner -->
 <div class="inside-banner">
   <div class="container"> 
-    <span class="pull-right"><a href="{{ url('/') }}">Home</a> / Semua</span>
+    {{-- <span class="pull-right"><a href="{{ url('/') }}">Home</a> / Semua</span> --}}
+    <span class="pull-right" style="margin-top: -5px;"><a href="{{ url('/login') }}" class="btn btn-info">Login</a></span>
     <h2><a href="{{ url('/') }}">Home</a> / Semua</h2>
 </div>
 </div>

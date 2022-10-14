@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/penghuni-kos/{id}/edit', [PenghuniKosController::class, 'edit']);
     Route::post('/penghuni-kos/{id}/update', [PenghuniKosController::class, 'update']);
     Route::delete('/penghuni-kos/{id}/delete', [PenghuniKosController::class, 'destroy']);
-    Route::post('/penghuni-kos/{id}/update-pembayaran', [RiwayatPembayaranController::class, 'updatePembayaran']);
     
     Route::get('/riwayat-pembayaran', [RiwayatPembayaranController::class, 'index']);
+    Route::post('/penghuni-kos/{id}/update-pembayaran', [RiwayatPembayaranController::class, 'updatePembayaran']);
 });
